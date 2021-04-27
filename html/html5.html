@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <audio controls>
+        <source src="horse.mp3">
+    </audio>
+    <video width="200px" height="100dp" controls autoplay>
+        <source src="anfu.mp4" type="video/mp4">
+    </video>
+    <newElement>
+        创建一个新元素
+    </newElement>
+    <br>
+    <canvas id="myCanvas" width="200px" height="200px" style="border:1px solid red">画一个文本</canvas>
+    <br>
+    <math>
+        <mrow>
+            <msup><mi>a</mi><mn>2</mn></msup>
+            <mo>+</mo>
+            <msup><mi>b</mi><mn>2</mn></msup>
+            <mo>=</mo>
+            <msup><mi>c</mi><mn>2</mn></msup>
+        </mrow>
+    </math>
+    <br>
+    <input type="submit" value="点击" onclick="getLocation()"><p id="p_location">电机按钮获取地理位置信息</p>
+
+    <script>
+        document.createElement("newElement")
+        var canvas = document.getElementById("myCanvas")
+        var context = canvas.getContext("2d");
+        context.fillStyle = "#FF0000"
+        context.fillRect(0, 0, 100, 100)
+
+        context.moveTo(0, 0)
+        context.lineTo(200, 200)
+        context.stroke()
+
+        function allowDrop(ev) {
+            ev.preventDefault()
+        }
+        function drag(ev) {
+            ev.dataTransfer.setData("Text", ev.target.id)
+        }
+        function getLocation(){
+            navigator.geolocation.getCurrentPosition(showPosition, errorPositionCallBack)
+        }
+        function showPosition(location) {
+            var locationTv = document.getElementById("p_location")
+            locationTv.innerText = "地理位置信息维度："+location.coords.latitude+",精度："+location.coords.longitude
+        }
+        function errorPositionCallBack(error){
+            var locationTv = document.getElementById("p_location")
+            switch (error.code){
+                case error.PERMISSION_DENIED:
+                    locationTv.innerText = "用户拒绝权限请求"
+                    break
+                case error.POSITION_UNAVAILABLE:
+                    locationTv.innerText = "位置信息不可用"
+                    break
+                case error.TIMEOUT:
+                    locationTv.innerText = "请求超时"
+                    break
+                case error.UNKNOWN_ERR:
+                    locationTv.innerText = "未知异常"
+                    break
+            }
+        }
+    </script>
+</body>
+<style>
+    newElement{
+        display: block;
+        background-color: white;
+        padding: 5px;
+        font-size: 30px;
+        color: black;
+        text-align: center;
+    }
+</style>
+</html>

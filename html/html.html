@@ -1,0 +1,101 @@
+<!DOCTYPE html><!--声明使用html5-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><!--编码格式-->
+    <meta name="学习文档">
+    <title>Title</title><!--网页标题-->
+    <style>
+        body{background: white}
+        p{color: black}
+    </style>
+    <link rel="icon" href="../imgs/imgs.png">
+<!--    <meta http-equiv="refresh" content="10">-->
+</head>
+<script>
+    function testWriteText(){
+        const text = document.getElementById("test_text").innerText;
+        document.getElementById("test_text").innerText = text
+    }
+</script>
+<body>
+    <p id="test_text">this is prepare view</p>
+    <input type="submit" value="click" onclick="testWriteText()">
+    <div>
+        <form action="select_language">
+            <fieldset>
+                <legend>语言选择</legend>
+                <input type="radio" name="language" value="zh">中文<br>
+                <input type="radio" name="language" value="en" checked>英文<br>
+            </fieldset>
+            <fieldset>
+                <legend>选择答案</legend>
+                <input type="checkbox" name="function" value="A">A<br>
+                <input type="checkbox" name="function" value="B">B<br>
+                <input type="checkbox" name="function" value="C">C<br>
+                <input type="checkbox" name="function" value="D" checked>D<br>
+            </fieldset>
+        </form>
+        <form name="select_function" action="">
+            <select name="选择答案" >
+                <option value="A">AAAA</option>
+                <option value="B">BBBB</option>
+                <option value="C">CCCC</option>
+                <option value="D" selected>DDDD</option>
+            </select>
+        </form>
+        <form action="login">
+            账号: <input type="text" name="账号"><br>
+            密码: <input type="password" name="密码"><br>
+            性别: <input type="radio" name="sex" value="男" checked>男<br>
+                 <input type="radio" name="sex" value="man">man<br>
+            复选: <input type="checkbox" name="密码"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div>
+        <h1 style="font-family: Arial,serif;color: aqua;text-align:center">学习文档</h1><!--h1-h6标题-->
+        <span>ceshi shuju</span>
+    </div>
+    <table border="1">
+        <tr>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+        </tr>
+        <tr>
+            <td>1行，1列</td>
+            <td>1行，2列</td>
+            <td>1行，3列</td>
+        </tr>
+        <tr>
+            <td>2行，1列</td>
+            <td>2行，2列</td>
+            <td>2行，3列</td>
+        </tr>
+    </table>
+    <hr/>
+    <p id="p_id_test" style="color: red;margin-left: 20px;padding-right: 20px">段落<br/>换一行新开始<hr/>加一条分割线<b>添加一段粗体字</b><i>添加一段斜体字</i><!--p标签段落-->
+    <br/>
+    <p>另一个P标签</p>
+    <br/><a href="https://www.baidu.com/" style="color: #000000;margin: 40px">百度</a><!--a标签连接-->
+    <br/><!--换行-->
+    <img src="../imgs/imgs.png" width="190" height="186" alt="a" /><!--图片标签-->
+    <br/>
+    <b >粗体字</b>
+    <i>斜体字</i>
+    <em>斜体字</em>
+    <small>缩小字体</small>
+    <strong>放大字体</strong>
+    <sub>下标</sub>
+    <sup>上标</sup>
+    <pre>预文本  前面俩空格
+换一行
+
+换两行
+    </pre>
+    <img src="//www.runoob.com/images/logo.png" width="100" height="30"/>
+
+    <img src="../imgs/img.png" width="304" height="228" alt="加载失败">
+</body>
+
+</html>

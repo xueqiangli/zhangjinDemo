@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Title</title>
+</head>
+<body>
+    <canvas width="400px" height="400px" id="canvas"  style="border:1px solid #c3c3c3;">画布</canvas>
+    <script>
+        var canvas = document.getElementById("canvas")
+        var ctx = canvas.getContext("2d")
+        // //画一个矩形
+        ctx.fillStyle = "#FF0000"
+        ctx.fillRect(100, 100, 200, 200)
+        //画一根线
+        ctx.moveTo(0, 0)
+        ctx.lineTo(200, 400)
+        ctx.moveTo(200, 0)
+        ctx.lineTo(200, 400)
+        ctx.stroke()
+        //画一个圆  圆点（200,200） 半径50
+        ctx.beginPath()
+        ctx.arc(100, 100, 100, 0, 2 * Math.PI)
+        ctx.stroke()
+        // ctx.fontcolor("#000000")
+        ctx.font = "30px Arial"
+        // ctx.fontcolor("#000000")
+        // ctx.fontsize(30)
+        // ctx.fontFamily = "Arial"
+        // ctx.fillText("Hello Word!", 100, 100)
+        ctx.strokeText("Hello Word!", 100, 100)
+    </script>
+</body>
+
+</html>

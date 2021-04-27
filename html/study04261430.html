@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    /*css控制样式*/
+    p{
+        background-color: aquamarine;
+        color: red;
+        text-align: center;
+        font-family: "Bell MT";
+    }
+</style>
+<body>
+    <p id="p_location">点击按钮获取地理位置</p>
+    <input type="submit" value="定位" onclick="getLocation()">
+    <br>
+    <video width="200px" height="150px" controls>
+        <source src="anfu.mp4" type="video/mp4">
+    </video>
+    <audio controls>
+        <source src="horse.mp3" type="audio/mpeg">
+    </audio>
+    <form action="">
+        选择要用的颜色<input type="color" name="选择颜色"><input type="submit" value="提交">
+        选择日期<input type="date" name="day"><input type="submit" value="提交">
+        选择日期<input type="datetime-local" name="datetime_local"><input type="submit" value="提交">
+        邮箱<input type="email" name="email"> <input type="submit" value="确定">
+        数字范围<input type="number" max="200" min="30" name="数字范围"><input type="submit" name="确定">
+        <br>范围<input type="range" min="0" max="100" value="1" name="范围"><input type="submit" name="确定">
+        搜索框<input type="search" name="搜索框"> <input type="submit" value="搜索">
+        电话<input type="tel" name="电话" placeholder="例：15678980873"><input type="submit" name="呼叫">
+        <br>
+        下拉列表<input list="browsers" name="browsers">
+        <datalist id="browsers">
+            <option value="html">
+            <option value="html4.0">
+            <option value="html5.0">
+            <option value="css">
+            <option value="javaScript">
+            <option value="jQuery">
+            <option value="vue">
+        </datalist>
+        <input type="submit" name="提交">
+    </form>
+    <form oninput="c.value = parseInt(a.value) + parseInt(b.value)">
+        0<input type="range" id="a" min="0" max="30" value="0">30+
+        <input type="number" id="b" min="0" max="30" value="0">=
+        <output id="c" for="a b">0</output>
+    </form>
+    <!--web存储-->
+    <p id="click_count">记录点击次数</p><input type="submit" value="点击" onclick="countNumber()">
+</body>
+<script>
+
+    function getLocation(){
+        navigator.geolocation.getCurrentPosition(showLocation, showError)
+    }
+    function showLocation(location) {
+        var localTv = document.getElementById("p_location")
+        localTv.innerText = "当前地里位置："+location.coords.latitude+",经度："+location.coords.longitude
+    }
+
+    function showError(error) {
+        var localTv = document.getElementById("p_location")
+        var errorMessage = ""
+        switch (error.code){
+            case error.PERMISSION_DENIED:
+                errorMessage = "用户拒绝权限"
+                break
+            case error.TIMEOUT:
+                errorMessage = "超时"
+                break
+            default:
+                errorMessage = "未知异常"
+                break
+        }
+        localTv.innerText = errorMessage
+
+    }
+    function countNumber() {
+        if (localStorage.countNumber){
+            localStorage.countNumber = parseInt(localStorage.countNumber) + 1
+        }else {
+            localStorage.countNumber = 1
+        }
+        if (parseInt(localStorage.countNumber) > 20){
+            localStorage.removeItem("countNumber")
+        }
+        var countText = document.getElementById("click_count")
+        countText.innerText = "点击次数："+localStorage.countNumber
+    }
+    function addKey(key, value) {
+        localStorage.setItem(key, value)
+    }
+    function removeKey(key) {
+        localStorage.removeItem(key)
+    }
+    function modify(key, value) {
+        localStorage.setItem(key, value)
+    }
+    function getValue(key) {
+        localStorage.getItem(key)
+    }
+</script>
+</html>
